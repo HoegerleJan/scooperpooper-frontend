@@ -25,7 +25,7 @@ export default function Home() {
         <AddButton />
       )}
       <ButtonGroup>
-        <Button
+        <Button color="secondary"
           onClick={() => {
             if (page >= 0) {
               setpage(page - 1);
@@ -35,10 +35,10 @@ export default function Home() {
         >
           {"<<"}
         </Button>
-        <Button disabled={true} disableAnimation={true}>
+        <Button disabled={true} disableAnimation={true} color="secondary">
           {page + "/" + (entries.length + 1)}{" "}
         </Button>
-        <Button
+        <Button color="secondary"
           onClick={() => {
             if (page <= entries.length) {
               setpage(page + 1);
