@@ -1,20 +1,28 @@
 "use client";
 import EntryDisplay from "@/components/EntryDisplay";
 import Cover from "@/components/Cover";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, ButtonGroup } from "@nextui-org/button";
 import AddButton from "@/components/AddButton";
+import axios from "axios";
 
 export default function Home() {
   const [page, setpage] = useState(0);
-  const example: Entry = {
-    id: 1,
-    user_Id: 1,
-    first_name: "Jan",
-    last_name: "Högerle",
-    nickname: "Doulrion",
-  };
-  const [entries, setentries] = useState<Entry[]>([example]);
+  const [entries, setentries] = useState<Entry[]>([]);
+
+  useEffect(() => {
+    axios
+      .get<Entry[]>("https://localhost:7073/api/EntryApi/GetEntries")
+      .then(function (response) {
+        // handle success
+        setentries(response.data);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      });
+  }, []);
+
   return (
     <section className='flex flex-col items-center justify-center gap-4 py-8 md:py-10'>
       {page === 0 ? (
@@ -24,8 +32,8 @@ export default function Home() {
       ) : (
         <AddButton />
       )}
-      <ButtonGroup>
-        <Button color="secondary"
+      <ButtonGroup color='secondary'>
+        <Button
           onClick={() => {
             if (page >= 0) {
               setpage(page - 1);
@@ -35,10 +43,10 @@ export default function Home() {
         >
           {"<<"}
         </Button>
-        <Button disabled={true} disableAnimation={true} color="secondary">
+        <Button disabled={true} disableAnimation={true}>
           {page + "/" + (entries.length + 1)}{" "}
         </Button>
-        <Button color="secondary"
+        <Button
           onClick={() => {
             if (page <= entries.length) {
               setpage(page + 1);
