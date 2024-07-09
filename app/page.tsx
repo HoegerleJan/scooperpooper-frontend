@@ -6,7 +6,11 @@ import { Button, ButtonGroup } from "@nextui-org/button";
 
 export default function Home() {
   const [page, setpage] = useState(0);
-  const [entries, setentries] = useState<Entry[]>([]);
+  const example: Entry = {
+    id: 1,
+    user_Id: 1,
+  };
+  const [entries, setentries] = useState<Entry[]>([example]);
   return (
     <section className='flex flex-col items-center justify-center gap-4 py-8 md:py-10'>
       {page === 0 ? (
@@ -27,7 +31,7 @@ export default function Home() {
         >
           {"<<"}
         </Button>
-        <Button disabled={true}>{page}</Button>
+        <Button disabled={true}>{page + "/" + (entries.length + 1)} </Button>
         <Button
           onClick={() => {
             if (page <= entries.length) {
