@@ -9,6 +9,9 @@ export default function Home() {
   const example: Entry = {
     id: 1,
     user_Id: 1,
+    first_name: "Jan",
+    last_name: "Högerle",
+    nickname: "Doulrion",
   };
   const [entries, setentries] = useState<Entry[]>([example]);
   return (
