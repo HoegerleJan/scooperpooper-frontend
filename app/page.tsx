@@ -3,6 +3,7 @@ import EntryDisplay from "@/components/EntryDisplay";
 import Cover from "@/components/Cover";
 import { useState } from "react";
 import { Button, ButtonGroup } from "@nextui-org/button";
+import AddButton from "@/components/AddButton";
 
 export default function Home() {
   const [page, setpage] = useState(0);
@@ -21,7 +22,7 @@ export default function Home() {
       ) : page <= entries.length ? (
         <EntryDisplay entry={entries[page - 1]} />
       ) : (
-        <Button>+</Button>
+        <AddButton />
       )}
       <ButtonGroup>
         <Button
@@ -34,7 +35,9 @@ export default function Home() {
         >
           {"<<"}
         </Button>
-        <Button disabled={true}>{page + "/" + (entries.length + 1)} </Button>
+        <Button disabled={true} disableAnimation={true}>
+          {page + "/" + (entries.length + 1)}{" "}
+        </Button>
         <Button
           onClick={() => {
             if (page <= entries.length) {
