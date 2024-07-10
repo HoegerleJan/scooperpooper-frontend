@@ -84,8 +84,8 @@ const EntryDisplay = ({ entry }: EntryDisplayProps) => {
   return (
     <>
       <div className={title({ color: "pink", size: "sm" })}>ε(´｡•᎑•`)っ 💕</div>
-      <div className={title({ color: "pink", size: "sm", padding: "lg" })}>
-        <div>Vorname: </div>
+      <div className={title({ color: "pink", size: "sm" })}>
+        <span>Vorname: </span>
         {isEditmode ? (
           <Input
             defaultValue={entry.first_name}
@@ -94,11 +94,13 @@ const EntryDisplay = ({ entry }: EntryDisplayProps) => {
             }}
           />
         ) : (
-          <div>{entry.first_name}</div>
+          <span className={title({ color: "violet", size: "sm" })}>
+            {entry.first_name}
+          </span>
         )}
       </div>
-      <div className={title({ color: "pink", size: "sm", padding: "lg" })}>
-        <div>Nachname: </div>
+      <div className={title({ color: "pink", size: "sm" })}>
+        <span>Nachname: </span>
         {isEditmode ? (
           <Input
             disabled={!isEditmode}
@@ -108,11 +110,13 @@ const EntryDisplay = ({ entry }: EntryDisplayProps) => {
             }}
           />
         ) : (
-          <div>{entry.last_name}</div>
+          <span className={title({ color: "violet", size: "sm" })}>
+            {entry.last_name}
+          </span>
         )}
       </div>
-      <div className={title({ color: "pink", size: "sm", padding: "lg" })}>
-        <div>Spitzname: </div>
+      <div className={title({ color: "pink", size: "sm" })}>
+        <span>Spitzname: </span>
         {isEditmode ? (
           <Input
             disabled={!isEditmode}
@@ -122,7 +126,9 @@ const EntryDisplay = ({ entry }: EntryDisplayProps) => {
             }}
           />
         ) : (
-          <div>{entry.nickname}</div>
+          <span className={title({ color: "violet", size: "sm" })}>
+            {entry.nickname}
+          </span>
         )}
       </div>
       <ButtonGroup>
@@ -134,15 +140,15 @@ const EntryDisplay = ({ entry }: EntryDisplayProps) => {
         />
         {isEditmode ? (
           <>
-            <Button color='secondary' onClick={deleteEntry}>
+            <Button color="secondary" onClick={deleteEntry}>
               <div>♡ Delete ♡</div>
             </Button>
-            <Button color='secondary' onClick={updateCard}>
+            <Button color="secondary" onClick={updateCard}>
               <div>♡ Save ♡</div>
             </Button>
           </>
         ) : (
-          <Button color='secondary' onClick={verifyKey}>
+          <Button color="secondary" onClick={verifyKey}>
             <div>♡ Edit ♡</div>
           </Button>
         )}
