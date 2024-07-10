@@ -32,6 +32,7 @@ const EntryDisplay = ({ entry }: EntryDisplayProps) => {
         console.log(response);
         if (response.status == 200) {
           setEditmode(false);
+          window.location.reload();
         }
       })
       .catch(function (error) {
@@ -53,6 +54,7 @@ const EntryDisplay = ({ entry }: EntryDisplayProps) => {
         console.log(response.data);
         if (response.status == 200) {
           setEditmode(false);
+          window.location.reload();
         }
       })
       .catch(function (error) {
@@ -140,15 +142,15 @@ const EntryDisplay = ({ entry }: EntryDisplayProps) => {
         />
         {isEditmode ? (
           <>
-            <Button color="secondary" onClick={deleteEntry}>
+            <Button color='secondary' onClick={deleteEntry}>
               <div>♡ Delete ♡</div>
             </Button>
-            <Button color="secondary" onClick={updateCard}>
+            <Button color='secondary' onClick={updateCard}>
               <div>♡ Save ♡</div>
             </Button>
           </>
         ) : (
-          <Button color="secondary" onClick={verifyKey}>
+          <Button color='secondary' onClick={verifyKey}>
             <div>♡ Edit ♡</div>
           </Button>
         )}

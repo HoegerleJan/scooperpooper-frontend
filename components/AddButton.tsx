@@ -23,7 +23,14 @@ const AddButton = () => {
       <div className={title({ color: "pink", size: "lg", padding: "lg" })}>
         𝓝𝓮𝓾𝓮 𝓕𝓻𝓮𝓾𝓷𝓭𝓮 𝓱𝓲𝓷𝔃𝓾𝓯ü𝓰𝓮𝓷? (づ˶•༝•˶)づ♡
       </div>
-      <Popover placement='bottom' showArrow={true} color='primary'>
+      <Popover
+        placement='bottom'
+        showArrow={true}
+        color='primary'
+        onClose={() => {
+          window.location.reload();
+        }}
+      >
         <PopoverTrigger>
           <Button color='secondary' onClick={createEntry}>
             <div className={title({ color: "pink", size: "sm" })}>♡ 𝓝𝓮𝓾 ♡</div>
