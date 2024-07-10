@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Button, ButtonGroup } from "@nextui-org/button";
 import AddButton from "@/components/AddButton";
 import axios from "axios";
+import { url } from "inspector";
 
 export default function Home() {
   const [page, setpage] = useState(0);
@@ -24,7 +25,9 @@ export default function Home() {
   }, []);
 
   return (
-    <section className='flex flex-col items-center justify-center gap-4 py-8 md:py-10'>
+    <section
+      className="flex flex-col items-center justify-center gap-4 py-8 md:py-10"
+    >
       {page === 0 ? (
         <Cover />
       ) : page <= entries.length ? (
@@ -32,7 +35,7 @@ export default function Home() {
       ) : (
         <AddButton />
       )}
-      <ButtonGroup color='secondary'>
+      <ButtonGroup color="secondary">
         <Button
           onClick={() => {
             if (page >= 0) {
